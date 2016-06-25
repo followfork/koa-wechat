@@ -1,0 +1,27 @@
+{
+  "name": "koa-wechat",
+  "version": "1.0.0",
+  "description": "wechat",
+  "main": "app.js",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "koa": "^1.2.0",
+    "request": "^2.72.0",
+    "sha1": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/followfork/koa-wechat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/followfork/koa-wechat/issues"
+  },
+  "homepage": "https://github.com/followfork/koa-wechat#readme"
+}
