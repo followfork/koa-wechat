@@ -5,7 +5,7 @@ var getRawBody = require('raw-body')
 var Wechat = require('./wechat')
 var util = require('./util')
 
-module.exports = function(opts) {
+module.exports = function(opts, handler) {
 	var wechat = new Wechat(opts)
 
 	return function *(next){
@@ -41,27 +41,27 @@ module.exports = function(opts) {
 
 			// 格式化 js数据
 			var message = util.formatMessage(content.xml)
-			// console.log(message)
+			console.log(message)
 
-			if(message.MsgType === 'event') {
-				if(message.Event === 'subscribe') {
-					var now = (new Date().getTime())
+			// if(message.MsgType === 'event') {
+			// 	if(message.Event === 'subscribe') {
+			// 		var now = (new Date().getTime())
 
-					that.status = 200
-					that.type = 'application/xml'
-					//    ******  index.html ?
-					that.body = '<xml>' +
-								'<ToUserName><![CDATA['+ message.FromUserName +']]></ToUserName>' +
-								'<FromUserName><![CDATA['+ message.ToUserName +']]></FromUserName>' +
-								'<CreateTime>'+ now +'</CreateTime>' +
-								'<MsgType><![CDATA[text]]></MsgType>' +
-								'<Content><![CDATA[hello, welcome]]></Content>' +
-								'</xml>'
+			// 		that.status = 200
+			// 		that.type = 'application/xml'
+			// 		that.body = ''
 
-					// console.log(that.body)
-					return 
-				}
-			}
+			// 		// console.log(that.body)
+			// 		return 
+			// 	}
+			// }
+
+			this.weixin = message
+
+			yield handler.call(this, next)  // ***给业务层处理逻辑
+
+			wechat.reply.call(this)
+
 		}
 	}
 }
