@@ -9,7 +9,7 @@ exports.reply = function* (next){
 				console.log('扫描二维码进来: ' + message.EventKey + ' ' + message.ticket)
 			}
 
-			this.body = '订阅了这个号\r\n'
+			this.body = 'haha, 欢迎订阅'
 		} else if(message.Event === 'unsubscribe'){
 			console.log('取消关注')
 			this.body = ''

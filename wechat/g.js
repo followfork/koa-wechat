@@ -56,7 +56,7 @@ module.exports = function(opts, handler) {
 			// 	}
 			// }
 
-			this.weixin = message
+			that.weixin = message
 
 			yield handler.call(this, next)  // ***给业务层处理逻辑
 
