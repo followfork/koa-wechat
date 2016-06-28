@@ -60,12 +60,12 @@ exports.tpl = function(content, message) {
 		type = 'news'
 	}
 
-	// type = content.type || type
+	type = content.type || type   //uhghhghjjkjuiyugi
 	info.content = content
 	info.createTime = new Date().getTime()
     info.msgType = type
     info.toUserName = fromUserName
     info.fromUserName = toUserName
-// console.log(info)
+	console.log(info)
     return tpl.compiled(info)
 }
